@@ -18,7 +18,8 @@ class Album extends Component {
 		currentSong: album.songs[0],
 		currentTime: 0,
 		duration: album.songs[0].duration,
-		isPlaying: false
+		isPlaying: false,
+		volume: 0.8
 	};
 
 	this.audioElement = document.createElement('audio');
@@ -80,7 +81,7 @@ handlePrevClick() {
 
 handleNextClick() {
 	const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-	const newIndex = Math.max(0, currentIndex + 1);
+	const newIndex = Math.min(this.state.album.songs.length, currentIndex + 1);
 	const newSong = this.state.album.songs[newIndex];
 	this.setSong(newSong);
 	this.play(newSong);
@@ -90,6 +91,11 @@ handleTimeChange(e) {
 	const newTime = this.audioElement.duration * e.target.value;
 	this.audioElement.currentTime = newTime;
 	this.setState({ currentTime: newTime });
+}
+
+handleVolumeChange(e) {
+	this.audioElement.volume = e.target.value;
+	this.setState({ volume: e.target.value });
 }
 
 
@@ -134,6 +140,7 @@ handleTimeChange(e) {
 					handlePrevClick={() => this.handlePrevClick()}
 					handleNextClick={() => this.handleNextClick()}
 					handleTimeChange={(e) => this.handleTimeChange(e)}
+					handleVolumeChange={(e) => this.handleVolumeChange(e)}
          		/>        	
          	</section>		
 		);
