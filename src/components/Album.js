@@ -56,6 +56,14 @@ handlePrevClick() {
 	this.play(newSong);
 }
 
+handleNextClick() {
+	const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
+	const newIndex = Math.max(0, currentIndex + 1);
+	const newSong = this.state.album.songs[newIndex];
+	this.setSong(newSong);
+	this.play(newSong);
+}
+
 
 	render() {
     	return (
@@ -75,20 +83,18 @@ handlePrevClick() {
 						<col id="song-duration-column" />
 					</colgroup>  
 					<tbody>
-						{
-							this.state.album.songs.map( (song, index) =>
-								<tr className="song" key={index} onClick={() => this.handleSongClick(song)} >
-									<td className="song-actions">	
-										<button>
-											<span className="song-number">{index+1}</span>
-											<span className="ion-play"></span>
-											<span className="ion-pause"></span>
-										</button>
-									</td>
-									<td className="song-title">{song.title}</td>
-									<td className="song-duration">{song.duration}</td>
-								</tr>
-							)}
+						{this.state.album.songs.map((song, index) => (
+							<tr className='song' key={index} onClick={() => this.handleSongClick(song)} >
+								<td className="song-actions">
+									<button>
+										<span className="song-number">{index + 1}</span>
+										<span className={this.props.isPlaying ? 'ion-pause' : 'ion-play'}></span>
+									</button>
+								</td>
+								<td className="song-title">{song.title}</td>
+								<td className="song-duration">{song.duration}</td>
+							</tr>
+						))}
 					</tbody>
 				</table>
 				<PlayerBar
@@ -96,6 +102,7 @@ handlePrevClick() {
 					currentSong={this.state.currentSong}
 					handleSongClick={() => this.handleSongClick(this.state.currentSong)}
 					handlePrevClick={() => this.handlePrevClick()}
+					handleNextClick={() => this.handleNextClick()}
          		/>        	
          	</section>		
 		);
