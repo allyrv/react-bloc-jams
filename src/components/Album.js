@@ -81,10 +81,15 @@ handlePrevClick() {
 
 handleNextClick() {
 	const currentIndex = this.state.album.songs.findIndex(song => this.state.currentSong === song);
-	const newIndex = Math.min(this.state.album.songs.length, currentIndex + 1);
-	const newSong = this.state.album.songs[newIndex];
-	this.setSong(newSong);
-	this.play(newSong);
+	const newIndex = currentIndex + 1
+
+	if (newIndex < this.state.album.songs.length) {
+		const newSong = this.state.album.songs[newIndex];
+		this.setSong(newSong);
+		this.play(newSong);
+	} else {
+		this.play(this.state.currentSong);
+	}
 }
 
 handleTimeChange(e) {
@@ -103,7 +108,7 @@ handleVolumeChange(e) {
     	return (
 			<section className="album">
 				<section id="album-info">
-           			<img id="album-cover-art" src={this.state.album.albumCover} />
+           			<img id="album-cover-art" src={this.state.album.albumCover} alt="album-cover-art"/>
            			<div className="album-details">
              			<h1 id="album-title">{this.state.album.title}</h1>
              			<h2 className="artist">{this.state.album.artist}</h2>
