@@ -103,6 +103,19 @@ handleVolumeChange(e) {
 	this.setState({ volume: e.target.value });
 }
 
+formatTime(time) {
+	if (isNaN(time)) { return "-:--"; }
+	const sec = Math.floor(time);
+	const min = Math.floor(sec / 60);
+	const rem = sec % 60;
+	let output = min + ":";
+	if (rem < 10) {
+		output += "0";
+	}
+	output += rem;
+	return output;
+}
+
 
 	render() {
     	return (
@@ -131,7 +144,7 @@ handleVolumeChange(e) {
 									</button>
 								</td>
 								<td className="song-title">{song.title}</td>
-								<td className="song-duration">{song.duration}</td>
+								<td className="song-duration">{this.formatTime(song.duration)}</td>
 							</tr>
 						))}
 					</tbody>
@@ -146,6 +159,7 @@ handleVolumeChange(e) {
 					handleNextClick={() => this.handleNextClick()}
 					handleTimeChange={(e) => this.handleTimeChange(e)}
 					handleVolumeChange={(e) => this.handleVolumeChange(e)}
+					formatTime = {(t) => this.formatTime(t)}
          		/>        	
          	</section>		
 		);
