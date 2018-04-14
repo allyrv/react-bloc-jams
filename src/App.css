@@ -1,74 +1,273 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
-}
-
-#time-control, #volume-control { 
-  margin:0px auto; 
-}
-
-h2, h3, h4 {
-  text-align:left;
-  margin-top:0px;
-  margin-bottom:0px;
+body{
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: rgb(58,23,63);
 }
 
 h1 {
-  color: purple; 
+  color: lightgrey;
+  font-weight: 200;
+  padding: 10px;
 }
+
+h1.hero-title{
+  font-size: 48px;
+  text-align: center;
+  color: #F8EFBA;
+}
+
+.navbar {
+  position: relative;
+  padding: 0.5rem;
+  background-color: rgba(101,18,95,0.5);
+  z-index: 1;
+}
+
+a:link, a:visited {
+  color: lightgrey;
+  font-size: 18px;
+  float: right;
+  padding: 8px;
+}
+
 
 h2 {
+  font-size: 36px;
+  text-align: center;
+  color: #F8EFBA;
+}
+
+p {
+  text-align: center;
+  color: lightgrey;
+}
+
+.library{
+  text-align: center;  
+}
+
+.player-bar {
+  background: black;
+  height: 100px;
+  width: 100%;
+}
+
+#buttons {
+  width: 300px;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+.albumText {
+  text-align: center;
+  color:white;
+}
+
+.images {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+}
+
+.album-info {
+  float: left;
+  text-align: right;
+  padding: 5px;
+  font-weight: 300;
+}
+
+#buttons button {
+  border: none;
+  background: none;
   color: black;
-  text-transform: uppercase;
-  font-size:30px;
+  font-size: 1.2rem;
+  color: hsla(0, 0%, 100%, 0.5);
+  transition: all 0.2s ease;
+  cursor: pointer;
 }
 
-h2.point-title{
-  text-align:center;
+#buttons button:hover, #buttons button:focus {
+  outline: none;
+  color: white;
 }
 
-h3 {
-  color:#999;
-  font-size:24px;
+#buttons #play-pause {
+  font-size: 2rem;
+  margin: 0.5rem 1rem 0;
 }
 
-h4 {
-  font-size:14px;
+#song-duration{
+  color:white;
 }
 
-p{
-  color: #888;  
+#time-control input {
+  float: left;
+  width: calc(100% - 80px);
 }
 
-#album-cover-art {
-  max-width:100%;  
+#time-control {
+  margin: 0.5rem auto;
+  width: 45%;
+}
+
+
+.point1, .point2, .point3 {
+  letter-spacing: 0.25px;
+  width: 33%;
+  float: left;
+  text-align: center;
+  position: relative;
+  display: block;
+  align-items: center;
+  justify-content: center;
+  max-width: 33%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+.point1-title, .point2-title, .point3-title {
+  font-family: AvenirNext-Bold;
+  font-size: 20px;
+  color: #5E5E5E;
+}
+
+.img {
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+#time-control div, #volume-control div {
+  font-size: 0.8rem;
+  color: hsla(0, 0%, 100%, 0.4);
+
+  display: block;
+  float: left;
+  text-align: center;
+}
+
+#volume-control div {
+  font-size: 1.3rem;
+  width: 15px;
+}
+
+#volume-control {
+  transform: translateY(-7%);
+  position: absolute;
+  right: 15rem;
+  width: 10%;
+  margin-right: 15px;
+  padding-right: 15px;
+}
+
+#volume-control input {
+  float: left;
+  width: calc(100% - 40px);
+}
+
+#song-list {
+  border-collapse: collapse;
+  clear: both;
+  font-weight: 100;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  overflow: hidden;
+  width: 100%;
+}
+
+#song-number-column {
+  width: 40px;
+  padding: 5px;
+}
+
+#song-duration-column {
+  width: 80px;
+}
+
+tr {
+  border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+  background: hsla(0, 0%, 0%, 0.05);
+  transition: all 0.2s ease;
+}
+
+tr:hover .song-title {
+  color: hsla(0, 0%, 100%, 1);
+}
+
+tr:last-child {
+  border: none;
+}
+
+td {
+  padding: 0.75rem;
+}
+
+tr button {
+  border: none;
+  background: none;
+  color: white;
+  padding: 5px;
+}
+
+.song-number {
+  color: white;
+  padding: 5px;
+}
+
+.song-title {
+  color: white;
+}
+
+.song-duration {
+  color: white;
+  text-align: right;
+}
+
+html {
+  font-size: 16px;
+}
+
+main {
+  width: 100%;
+  max-width: 800px;
+  margin: 4rem auto 150px;
+  padding: 1rem;
+  box-sizing: border-box;
 }
 
 #album-info {
-margin-right:25px;
+  overflow: hidden;
 }
 
-.album-img {
-  margin-right: 25px;
+#album-title {
+  font-size: 2.5rem;
+  font-weight: lighter;
+  color: lightgrey;
+  text-align: center;
+}
+
+#album-cover-art {
+  margin-left: 15%;
+}
+
+h2.artist {
+  font-weight: lighter;
+  font-size: 1.25rem;
+  opacity: 0.9;
+  color: lightgrey;
+  text-align: center;
+}
+
+#release-info {
+  opacity: 0.5;
+  font-size: 0.75rem;
+  color: lightgrey;
+  text-align: center;
 }
 
 @keyframes App-logo-spin {
